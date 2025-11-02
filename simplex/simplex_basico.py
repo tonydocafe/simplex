@@ -26,7 +26,10 @@ def simplex(matriz):
             else:
                 razoes.append(np.inf)
 
-        linhaPivoIdx = np.argmin(razoes) + 1
+        menor = min(r for r in razoes if r != np.inf)
+        indices = [i for i, r in enumerate(razoes) if r == menor]
+        linhaPivoIdx = indices[0] + 1 
+
         print(f"↩️ Variavel que sai: linha {linhaPivoIdx}")
         pivo = matriz[linhaPivoIdx, variavelEntrando]
         matriz[linhaPivoIdx, :] /= pivo
