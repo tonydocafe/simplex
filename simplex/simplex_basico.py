@@ -11,6 +11,7 @@ def simplex(matriz):
         print(matriz)
         z = matriz[0, :-1]
         if all(c <= 0 for c in z):
+            
             print("\n✅ Solucao otima encontrada!")
             break
 
@@ -29,6 +30,12 @@ def simplex(matriz):
         menor = min(r for r in razoes if r != np.inf)
         indices = [i for i, r in enumerate(razoes) if r == menor]
         linhaPivoIdx = indices[0] + 1 
+
+
+        if all(r == np.inf for r in razoes):
+            print("\n⚠️ Problema ilimitado: nenhuma variável pode sair da base.")
+            return
+
 
         print(f"↩️ Variavel que sai: linha {linhaPivoIdx}")
         pivo = matriz[linhaPivoIdx, variavelEntrando]
