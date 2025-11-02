@@ -14,7 +14,8 @@ def simplex(matriz):
             print("\n✅ Solucao otima encontrada!")
             break
 
-        variavelEntrando = np.argmax(z)
+        variavelEntrando = next(i for i, v in enumerate(z) if v == max(z))
+
         print(f"➡️ Variavel que entra: x{variavelEntrando + 1}")
         cPivo = matriz[1:, variavelEntrando]
         termosB = matriz[1:, -1]
